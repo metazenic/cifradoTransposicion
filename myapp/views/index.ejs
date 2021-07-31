@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <main>
+      <form action="/enviar" method="POST">
+        <label for="mensaje">
+          mensaje:
+          <input type="text" name="mensaje" id="mensaje">
+        </label>
+        <label for="clave">
+          clave:
+          <input type="number" name="clave" id="clave">
+        </label>
+        <input type="submit" value="Codificar" style="width: 20%;">
+      </form>
+    </main>
+  </body>
+</html>
