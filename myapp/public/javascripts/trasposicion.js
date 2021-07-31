@@ -1,10 +1,11 @@
 function letraRandom() {
-  return "abcdefghijklmnñopqrstuvwxyz"[Math.floor(Math.random() * Math.floor(27))];
+  return "abcdefghijklmnñopqrstuvwxyz"[
+    Math.floor(Math.random() * Math.floor(27))
+  ];
 }
 
-function codificar(mensaje, clave) {
+function fragmentarMensaje(mensaje, clave) {
   let listaFragmentosMensaje = [];
-  let mensajeCifrado = "";
 
   while (mensaje.length % clave != 0) {
     mensaje += letraRandom();
@@ -20,14 +21,21 @@ function codificar(mensaje, clave) {
     contador++;
   }
 
+  return listaFragmentosMensaje;
+}
+
+function codificar(mensaje, clave) {
+  const mensajeFragmentado = fragmentarMensaje(mensaje, clave);
+  let mensajeCifrado = "";
+
   for (let i = 0; i < clave; i++) {
-    for (let j = 0; j < listaFragmentosMensaje.length; j++) {
-      mensajeCifrado += listaFragmentosMensaje[j][i];
+    for (let j = 0; j < mensajeFragmentado.length; j++) {
+      mensajeCifrado += mensajeFragmentado[j][i];
     }
   }
   return mensajeCifrado;
 }
 
 module.exports = {
-  codificar
-}
+  codificar,
+};
